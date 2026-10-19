@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>fb08cf36-ba9d-42dd-99f7-995b397f56a3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>IKT26_Ruhm4.py</StartupFile>
+    <StartupFile>Too_1_1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IKT26_Ruhm4.py" />
+    <Compile Include="Too_1_1.py" />
+    <Compile Include="Vigade_otsing.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
