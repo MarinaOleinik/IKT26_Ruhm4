@@ -61,7 +61,7 @@ pindala=pikkus*laius
 print(f"Toa põranda pindala on {round(pindala, 2)} ruutmeetrit.")
 remont=input("Kas soovid remonti teha? (jah/ei): ").lower()
 if remont=="jah":
-    print("Teeme remonti!")
+    print("Teeme remonti!") 
     try:
         rm_hind=float(input("Sisesta ruutmeetri hind: "))
         remondi_hind=pindala*rm_hind
@@ -92,3 +92,134 @@ try:
     print(f"Lõplik hind on {round(lõpphind, 2)} eurot.")
 except:
     print("Palun sisesta kehtiv number alghinna jaoks.")
+
+#5. Temperatuur
+# Küsi toatemperatuur ja teata, kas see on üle 18 kraadi (soovitatav toasoojus talvel). 
+# Temperatuur võib olla ka negatiivne või kümnendarv, 
+# seega kontrolli sisendit try/except abil.
+try:
+    t=float(input("Toatemperatuur: "))
+    if t>18:
+        print("See on soovitatav toasoojus")
+    else:
+        print("Liiga külm")
+except ValueError:
+    print("Viga!")
+
+# 6. Pikkus
+# Küsi inimese pikkus sentimeetrites ja teata, kas ta on lühike, 
+# keskmise pikkusega või pikk. 
+# Piirid pane ise paika ja kirjuta need programmi alguses kommentaarina.
+# 7. Pikkus ja sugu
+# Täienda ülesannet 6: küsi lisaks sugu. Meestele ja naistele kehtivad erinevad piirid. 
+# Tingimusplokid võivad olla üksteise sees.
+# Sugu võib sisestada mis tahes kujul (M, m, mees, MEES). 
+# Programm peab selle ära tundma.
+# Kui sugu on sisestatud valesti, kuva veateade.
+# Kasuta: pesastatud if-laused, lower()
+sugu=input("Sugu: ")
+if sugu.lower()=="m" or sugu.lower()=="mees":
+    try:
+        pikkus=int(input("Sisesta pikkus (sm): "))
+        if 56<pikkus<150:
+            print("Lühike kasv")
+        elif 150<=pikkus<170:
+            print("Keskmine kasv")
+        elif 170<=pikkus<220:
+            print("Pikka kasvu inimene")
+        else:
+            print("Viga andmetega")
+    except ValueError:
+        print("Viga: kasuta numbreid")
+elif sugu.lower()=="n" or sugu.lower()=="naine":
+    try:
+        pikkus=int(input("Sisesta pikkus (sm): "))
+        if 56<pikkus<150:
+            print("Lühike kasv")
+        elif 150<=pikkus<165:
+            print("Keskmine kasv")
+        elif 165<=pikkus<210:
+            print("Pikka kasvu inimene")
+        else:
+            print("Viga andmetega")
+    except ValueError:
+        print("Viga: kasuta numbreid")
+else:
+    print("Viga")
+# 8. Poes
+# Küsi kasutajalt iga toote kohta eraldi, kas ta soovib seda osta: 
+#  piim, sai, leib ja vähemalt kaks toodet veel.
+
+# Toodete hinnad loo juhuslikult moodulist random, näiteks round(random.uniform(0.5, 3), 2).
+# Kui kasutaja soovib toodet osta, küsi kogus. Kontrolli, et kogus on täisarv (isdigit()).
+# Lõpus kuva tšekk: iga ostetud toote nimi, kogus, hind ja summa ning kõige all kogusumma.
+summa=0
+from random import *
+arve=" Toode    Kogus    Hind    Kokku\n"
+valik=input("Kas soovid osta piima? jah/ei: ")
+if valik.lower()=="jah":
+    kogus=input("Mitu: ")
+    if kogus.isdigit():
+        kogus=int(kogus)
+        p_hind=round(uniform(0.5,3),2)
+        print(f"Piima hind on {p_hind}")
+        arve+=f"piim    {kogus}    {p_hind}€    {round(kogus*p_hind,2)}€\n"
+        summa+=kogus*p_hind
+    else:
+        print("Viga: vale kogus")
+else:
+    print("Selge: piima ei taha")
+
+print("Arve nr: 00000000")
+print(arve)
+print(f"Kokku: {summa}€")
+
+# 9. Ruut
+# Kasutaja sisestab nelinurga nelja külje pikkused. 
+# Programm teatab, kas tegemist saab olla ruuduga (kõik küljed on võrdsed). 
+# Kontrolli ka, et kõik pikkused on positiivsed.
+
+# Koosta programmi kohta plokkskeem ja salvesta see PNG-pildina programmiga samasse kausta.  https://lucid.app/
+try:
+    print("Nelinurga kontroll")
+    k1=float(input("1. külje pikkus: "))
+    k2=float(input("2. külje pikkus: "))
+    k3=float(input("3. külje pikkus: "))
+    k4=float(input("4. külje pikkus: "))
+    if k1>0 and k2>0 and k3>0 and k4>0:
+        if k1==k2==k3==k4:
+            print("Ruudu küljed")
+        else:
+            print("Nelinurga küljed")
+    else:
+        print("Viga: küljed > 0")
+except ValueError:
+    print("Viga: täisarv")
+
+# 10. Matemaatika
+# Kasutaja sisestab kaks arvu. 
+# Seejärel küsib programm, millist tehet ta soovib (+, -, *, /), ja kuvab tulemuse.
+
+# Kui sisestatakse tundmatu tehtemärk, kuva veateade.
+# Nulliga jagamise korral kuva arusaadav teade, mitte veateade Pythonist.
+# Koosta programmi kohta plokkskeem ja salvesta see PNG-pildina programmiga samasse kausta.
+tehed=["+", "-", "*", "/"]
+try:
+   arv1=float(input("Sisesta 1. arv: "))
+   arv2=float(input("Sisesta 2. arv: "))
+   tehe=input("Sisasta tehe: ")
+   if tehe in tehed:
+       if tehe=="+":
+           print(f"{arv1}{tehe}{arv2}={arv1+arv2}")
+       elif tehe=="-":
+           print(f"{arv1}{tehe}{arv2}={arv1-arv2}")
+       elif tehe=="/":
+           if arv2==0:
+               print("DIV/0")
+           else:
+               print(f"{arv1}{tehe}{arv2}={arv1/arv2}")
+
+   else:
+       print("Tundmatu tehtemärk")
+except ValueError:
+    print("Viga: sisesta arvud")
